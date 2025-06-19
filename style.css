@@ -1,24 +1,33 @@
+:root {
+	--cell-size: 0px;
+	--rows: 0;
+	--cols: 0;
+}
+
 body {
 	background-color: lightblue;
 }
 
 .container {
-	width: 100px;
-	height: 100px;
+	width: calc(var(--cell-size) * var(--cols));
+	height: calc(var(--cell-size) * var(--rows));
+	
+	grid-template-rows: repeat(var(--rows), var(--cell-size));
+	grid-template-columns: repeat(var(--cols), var(--cell-size));
+
 	display: grid;
-	grid-template-rows: repeat(3, 30px);
-	grid-template-columns: repeat(3, 30px);
 	margin: 0 auto;
-	background-color: red;
+	background-color: darkblue;
 	align-items: center;
 	justify-content: center;
 }
 
 .cell {
 	display: flex;
-	width: 30px;
-	height: 30px;
+	width: var(--cell-size);
+	height: var(--cell-size);
 	background-color: white;
 	align-items: center;
 	justify-content: center;
+	outline: 1px solid black;
 }

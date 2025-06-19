@@ -1,4 +1,4 @@
-console.log("Hello, World");
+import {get_cell, get_cells, get_container} from "./utils.js";
+import {game_setup} from "./logic.js";
 
-const container = document.querySelector(".container");
-const cell = container.querySelector(".cell");
+game_setup();
