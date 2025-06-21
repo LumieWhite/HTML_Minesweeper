@@ -1,7 +1,7 @@
 export const config = {
-	ROWS: 40,
-	COLS: 20,
-	CELL_SIZE: 40,
+	ROWS: 15,
+	COLS: 15,
+	CELL_SIZE: 30,
 	MINE_RATE: 0.2,
 	GAME_STATE: "normal"
 };

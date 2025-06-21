@@ -26,12 +26,22 @@ function cell_setup() {
 			cell.dataset.row = row;
 			cell.dataset.col = col;
 			cell.addEventListener("click", () => {
-				console.log("Cicked")
 				if (config.GAME_STATE == "normal") reveal_cell(cell);
 			});
 			cell.addEventListener("contextmenu", (event) => {
 				event.preventDefault();
 				if (config.GAME_STATE == "normal") flag_cell(cell);
+			});
+			let lastTap = 0;
+			cell.addEventListener("touchend", (event) => {
+			    const currentTime = new Date().getTime();
+			    const tapLength = currentTime - lastTap;
+
+			    if (tapLength < 300 && tapLength > 0) {
+			        // Double tap detected
+			        if (config.GAME_STATE === "normal") flag_cell(cell);
+			    }
+			    lastTap = currentTime;
 			});
 			cell.addEventListener("mousedown", (event) => {
 				if (event.button == 1) {
@@ -105,7 +115,6 @@ export function mine_setup(start_row, start_col) {
 function docu_setup() {
 	document.addEventListener("keydown", (event) => {
 		if (event.key === " ") {
-			console.log("Restarted")
 			cell_setup();
 		}
 	});
